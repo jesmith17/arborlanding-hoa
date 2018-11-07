@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+  <div class="container" >
+    <div class="navbar-translate">
+      <a class="navbar-brand" [routerLink]="['/','public']">Arbor Landing</a>
+      <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" rel="tooltip" title="Events Calendar" data-placement="bottom" [routerLink]="['/','public','events']">
+            <i class="nc-icon nc-calendar-60"></i> Events
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/arborlandinghoa/" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+            Facebook
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation()">
+          <a class="nav-link" rel="tooltip" title="Join the conversation on Nextdoor" data-placement="bottom" href="https://www.nextdoor.com" target="_blank">
+            <i class="fa fa-home"></i>
+            NextDoor
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" title="Resident Login" data-placement="bottom" [routerLink]="['/','public','signin']">
+            <i class="fa fa-sign-in"></i>
+            Sign In
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
