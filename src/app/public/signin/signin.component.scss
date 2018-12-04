@@ -1,50 +1,28 @@
-@import "~bootstrap/scss/bootstrap";
-@import 'now-ui-dashboard/variables';
-@import 'now-ui-dashboard/mixins';
+@import 'paper-kit';
 
-// Plugins CSS
-@import "now-ui-dashboard/plugins/plugin-animate-bootstrap-notify";
-@import "now-ui-dashboard/plugins/plugin-perfect-scrollbar";
 
-// Core CSS
-@import "now-ui-dashboard/buttons";
-@import "now-ui-dashboard/inputs";
-@import "now-ui-dashboard/typography";
-@import "now-ui-dashboard/misc";
-@import "now-ui-dashboard/checkboxes-radio";
+.page-header {
+  padding-top: 125px;
+}
+.btn {
+  margin-top: 15px;
+}
+h4 {
+  margin: 0 0 0;
+}
 
-// components
-@import "now-ui-dashboard/navbar";
-@import "now-ui-dashboard/page-header";
-@import "now-ui-dashboard/dropdown";
-@import "now-ui-dashboard/alerts";
-@import "now-ui-dashboard/images";
-@import "now-ui-dashboard/nucleo-outline";
-@import "now-ui-dashboard/tables";
-@import "now-ui-dashboard/sidebar-and-main-panel";
-@import "now-ui-dashboard/footers";
-@import "now-ui-dashboard/fixed-plugin";
+.input-group .form-control, .input-group-prepend {
+  background-color: rgba(255,255,255,0.6);
+}
+::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+  font-weight: bold;
 
-// cards
-@import "now-ui-dashboard/cards";
-@import "now-ui-dashboard/cards/card-plain";
-@import "now-ui-dashboard/cards/card-chart";
-@import "now-ui-dashboard/cards/card-user";
-@import "now-ui-dashboard/cards/card-map";
-
-@import "now-ui-dashboard/responsive";
-@import "now-ui-dashboard/example-pages";
-
+}
 
 .main-panel {
   min-height: 600px;
-}
-.btn-primary {
-  background-color: $blue;
-  color: #FFFFFF;
-}
-.btn-primary:hover {
-  background-color: $secondary;
 }
 .card-login {
   padding-top: 120px;
