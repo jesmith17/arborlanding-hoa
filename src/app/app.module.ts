@@ -9,6 +9,17 @@ import {AppRoutingModule} from './app.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from './events/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthService} from './services/auth.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './interceptors/auth-interceptor';
+import {AppService} from './services/app.service';
+import {ClipboardModule} from 'ngx-clipboard';
+
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+];
+
 
 @NgModule({
   declarations: [
@@ -20,11 +31,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PublicModule,
     ResidentModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     SharedModule,
     NgbModule.forRoot(),
+    ClipboardModule
 
   ],
-  providers: [],
+  providers: [AuthService, HttpClientModule, httpInterceptorProviders, AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

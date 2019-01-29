@@ -30,8 +30,6 @@ export class NavbarComponent implements OnInit {
             // remove logic
             navbar.children[0].classList.add('navbar-transparent');
             navbar.children[0].children[0].classList.add('navbar-transparent');
-          } else {
-            console.log(window.pageYOffset);
           }
         });
     }

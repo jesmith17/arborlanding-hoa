@@ -1,6 +1,8 @@
 .nav-item.active > a > i {
-  color: black
+  color: black;
+  line-height: 15px;
 }
 .nav-item.active > a > p {
-  color: black
+  color: black;
+  line-height: 15px;
 }

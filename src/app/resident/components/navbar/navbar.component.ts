@@ -138,15 +138,16 @@ export class NavbarComponent implements OnInit {
         }
     };
 
-    getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
+    getTitle() {
+      let titlee = this.location.prepareExternalUrl(this.location.path());
+      if (titlee.charAt(0) === '#') {
           titlee = titlee.slice( 2 );
       }
       titlee = titlee.split('/').pop();
+      console.log(this.listTitles);
 
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
+      for ( let item = 0; item < this.listTitles.length; item++ ) {
+          if ( this.listTitles[item].path.split('/').pop() === titlee ) {
               return this.listTitles[item].title;
           }
       }

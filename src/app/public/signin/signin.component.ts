@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,32 +8,43 @@ import {Router} from '@angular/router';
   styleUrls: ['./signin.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
 
-  data : Date = new Date();
-  focus;
-  focus1;
+  public email: string;
+  public password: string;
+  public error: string;
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    var body = document.getElementsByTagName('body')[0];
+    const body = document.getElementsByTagName('body')[0];
     body.classList.add('login-page');
 
-    var navbar = document.getElementsByTagName('nav')[0];
+    const navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
   }
-  ngOnDestroy(){
-    var body = document.getElementsByTagName('body')[0];
+
+  ngOnDestroy() {
+    const body = document.getElementsByTagName('body')[0];
     body.classList.remove('login-page');
 
-    var navbar = document.getElementsByTagName('nav')[0];
+    const navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.remove('navbar-transparent');
   }
 
   signin() {
-    this.router.navigate(['/heroes']);
-  }
+    this.authService.login(this.email, this.password)
+      .subscribe(success => {
+          if (success) {
+            this.router.navigate(['/resident/home']);
+          }
+        },
+        error => {
+        console.log('login failed');
+          this.error = 'Username or password is incorrect';
+        });
 
+  }
 
 }

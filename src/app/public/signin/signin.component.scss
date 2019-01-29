@@ -11,8 +11,14 @@ h4 {
   margin: 0 0 0;
 }
 
-.input-group .form-control, .input-group-prepend {
-  background-color: rgba(255,255,255,0.6);
+.input-group .input-group-prepend, .form-control  {
+    background-color: rgba(255, 255, 255, 0.6);
+    .ng-touched {
+      color: black;
+      font-size: large;
+      font-weight: 600;
+
+    }
 }
 ::placeholder {
   color: white !important;
@@ -47,4 +53,6 @@ h4 {
   background-color: rgba(255,255,255, 0.3);
   color: rgba(255,255,255, 0.9);
 }
+
+
 

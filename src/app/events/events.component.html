@@ -9,19 +9,44 @@
           </button>
         </div>
         <div class="modal-body">
-          <div>
-            <pre>{{ modalData?.event.meta }}</pre>
-          </div>
-          <div>
-            <pre>Start: {{ modalData?.event.start}}</pre>
-            <pre>End: {{ modalData?.event.end}}</pre>
+          <div class="row">
+            <div class="col-md-4">
+              <pre>Start: {{ modalData?.event.start | date }}</pre>
+              <pre>End: {{ modalData?.event.end | date }}</pre>
+            </div>
+            <div class="col-md-6">
+              <pre>Title: {{ modalData?.event.title }}</pre>
+              <pre>Description: {{ modalData?.event.meta.description }}</pre>
+              <pre>Location: {{ modalData?.event.meta.location }}</pre>
+
+            </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+          <button type="button" class="btn btn-outline-secondary" (click)="close(addEventContent)">OK</button>
         </div>
       </ng-template>
-
+      <ng-template #subscribeContent let-close="close">
+        <div class="modal-header">
+          <h5 class="modal-title">Calendar Subscription</h5>
+          <button type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-10 col-md-pull-2">
+              Use the URL below in your calendar app to subscribe to HOA events.
+            </div>
+            <div class="col-md-10 col-md-pull-2">
+              <input type="url" value="{{subscribeUrl}}"/>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="close(addEventContent)">OK</button>
+        </div>
+      </ng-template>
       <div class="row text-center">
         <div class="col-md-4">
           <div class="btn-group">
@@ -103,6 +128,14 @@
           (eventClicked)="handleEvent('Clicked', $event.event)"
           (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-day-view>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-pull-4 pull-right">
+          <button class="btn btn-primary" (click)="open(subscribeContent)"><i class="fa fa-calendar"></i> Subscribe to Calendar</button>
+        </div>
       </div>
     </div>
   </div>
