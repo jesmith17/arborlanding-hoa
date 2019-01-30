@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://arborlanding-hoa.com'
+  baseUrl: 'http://arborhoa-rails.herokuapp.com',
+  subscribeUrl: `/calendars/subscribe`
 };
