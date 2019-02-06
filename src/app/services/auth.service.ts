@@ -26,16 +26,6 @@ export class AuthService {
 
 
 
-  /*
-  login(email: string, password: string): Observable<Object> {
-    const expandedHeaders = this.prepareHeader();
-    return this.http.post(environment.baseUrl + '/login', JSON.stringify({user: { email: email, password: password }}), expandedHeaders)
-      .pipe(
-        data => this.checkHeaders(data),
-            error => console.log('Something went wrong'));
-  }
-  */
-
   login(username: string, password: string): Observable<boolean> {
     const expandedHeaders = this.prepareHeader();
     return this.http.post(environment.baseUrl + '/login', {user: {email: username, password: password}}, expandedHeaders)
@@ -45,6 +35,7 @@ export class AuthService {
           const token = headers[headers.length - 1 ];
           if (token != null) {
             this.token = new User(token);
+            console.log(this.token);
             localStorage.setItem('currentUser', JSON.stringify(this.token));
             return true;
           } else {

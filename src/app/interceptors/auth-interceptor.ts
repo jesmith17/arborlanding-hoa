@@ -30,7 +30,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 this.router.navigate(['/public/signin']);
             }
         }
-        console.log(token);
         if (token != null) {
             headers['Authorization'] = `Bearer ${token.jwtToken}`;
         }

@@ -10,7 +10,7 @@ import {SharedModule} from '../events/shared.module';
 import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
 import {SignoutComponent} from './signout/signout.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,6 +18,7 @@ import {FormsModule} from '@angular/forms';
     PublicRoutingModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     ScrollSpyModule.forRoot(),
   ],
   declarations: [HomeComponent, NavbarComponent, PublicComponent, PublicCalendarComponent,

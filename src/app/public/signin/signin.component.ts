@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,13 @@ export class SigninComponent implements OnInit, OnDestroy {
   public error: string;
 
 
-  constructor(private router: Router, private authService: AuthService) { }
+  signInForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+
+
+  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
     const body = document.getElementsByTagName('body')[0];
@@ -33,8 +40,12 @@ export class SigninComponent implements OnInit, OnDestroy {
     navbar.classList.remove('navbar-transparent');
   }
 
+
+
+
+
   signin() {
-    this.authService.login(this.email, this.password)
+    this.authService.login(this.signInForm.get('email').value, this.signInForm.get('password').value)
       .subscribe(success => {
           if (success) {
             this.router.navigate(['/resident/home']);

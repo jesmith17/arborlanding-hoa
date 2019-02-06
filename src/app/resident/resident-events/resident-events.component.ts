@@ -2,6 +2,7 @@ import {Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@ang
 import {NgbDateStruct, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AppService} from '../../services/app.service';
 import {CalendarEvent} from '../../models/calendar-event.model';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-resident-events',
@@ -22,16 +23,30 @@ export class ResidentEventsComponent implements OnInit {
 
 
 
-  constructor(private modal: NgbModal, private appService: AppService) {}
+  constructor(private modal: NgbModal, private appService: AppService, private fb: FormBuilder) {}
+
+  addEventForm = this.fb.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    startDate: ['', Validators.required],
+    endDate: ['', Validators.required],
+    startTime: ['', Validators.required],
+    endTime: ['', Validators.required],
+    reminderDate: [''],
+    reminderTime: [''],
+    location: ['', Validators.required]
+  });
 
   ngOnInit() {
   }
 
 
   addEvent() {
+    const form = this.addEventForm;
+    this.event = form.value;
     this.modal.dismissAll();
-    this.event.startDate = new Date(this.startDate['year'], this.startDate['month'], this.startDate['day'], this.startTime['hour'], this.startTime['minute']);
-    this.event.endDate = new Date(this.endDate['year'], this.endDate['month'], this.endDate['day'], this.endTime['hour'], this.endTime['minute']);
+    this.event.startDate = new Date(form.get('startDate')['year'], form.get('startDate')['month'], form.get('startDate')['day'], form.get('startTime')['hour'], form.get('startTime')['minute']);
+    this.event.endDate = new Date(form.get('endDate')['year'], form.get('endDate')['month'], form.get('endDate')['day'], form.get('endTime')['hour'], form.get('endTime')['minute']);
     this.appService.saveEvent(this.event).subscribe(data =>  console.log('I completed'));
   }
 
@@ -40,6 +55,10 @@ export class ResidentEventsComponent implements OnInit {
     }, (reason) => {
     });
   }
+
+
+
+
 
 
 }

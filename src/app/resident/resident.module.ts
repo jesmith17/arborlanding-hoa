@@ -8,7 +8,7 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {SharedModule} from '../events/shared.module';
 import {ResidentEventsComponent} from './resident-events/resident-events.component';
 import { ArchrequestComponent } from './archrequest/archrequest.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -20,6 +20,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ResidentRoutingModule,
     ComponentsModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     NgbModule
   ],

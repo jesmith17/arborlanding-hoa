@@ -8,18 +8,18 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
-        <form (ngSubmit)="addEvent()" #addEventForm="ngForm">
+        <form (ngSubmit)="addEvent()" [formGroup]="addEventForm">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" placeholder="Title" value="" [(ngModel)]="event.title" name="title" id="title">
+                <input type="text" class="form-control" placeholder="Title" value="" formControlName="title" name="title" id="title">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" class="form-control" placeholder="Location" [(ngModel)]="event.location" name="location" id="location">
+                <input type="text" class="form-control" placeholder="Location" formControlName="location" name="location" id="location">
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="description">Description</label>
-                <textarea rows="4" cols="80" class="form-control" placeholder="Event Description" value="" id="description" name="description" [(ngModel)]="event.description"></textarea>
+                <textarea rows="4" cols="80" class="form-control" placeholder="Event Description" value="" id="description" name="description" formControlName="description"></textarea>
               </div>
             </div>
           </div>
@@ -37,28 +37,28 @@
                 <label for="start_date">Event Start</label>
                 <!--<input id="start_date" type="email" class="form-control" placeholder="Name">-->
                 <input class="form-control datetimepicker" placeholder="06/07/2017" id="start_date"
-                       name="start_date" [(ngModel)]="startDate" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()" data-color="orange">
+                       name="start_date" formControlName="startDate" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()" data-color="orange">
               </div>
-              <ngb-timepicker name="startTime" [(ngModel)]="startTime" [meridian]="true"></ngb-timepicker>
+              <ngb-timepicker name="startTime" formControlName="startTime" [meridian]="true"></ngb-timepicker>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label for="end_date">Event End</label>
                 <input class="form-control datetimepicker" placeholder="06/07/2017" id="end_date"
-                       name="end_date" [(ngModel)]="endDate" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()" data-color="orange">
+                       name="end_date" formControlName="endDate" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()" data-color="orange">
               </div>
-              <ngb-timepicker name="endTime" [(ngModel)]="endTime" [meridian]="true"></ngb-timepicker>
+              <ngb-timepicker name="endTime" formControlName="endTime" [meridian]="true"></ngb-timepicker>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label for="reminder">Reminder Date</label>
                 <input class="form-control datetimepicker" placeholder="06/07/2017" id="reminder"
-                       name="reminder_date" [(ngModel)]="event.reminder_date" ngbDatepicker #remind="ngbDatepicker" (click)="remind.toggle()" data-color="orange">
+                       name="reminder_date" formControlName="reminderDate" ngbDatepicker #remind="ngbDatepicker" (click)="remind.toggle()" data-color="orange">
               </div>
-              <ngb-timepicker  name="reminderTime" [(ngModel)]="reminderTime" [meridian]="true"></ngb-timepicker>
+              <ngb-timepicker  name="reminderTime" formControlName="reminderTime" [meridian]="true"></ngb-timepicker>
             </div>
             <div class="col-md-4">
-              <input type="submit" class="btn btn-primary btn-lg btn-fill" value="Save"/>
+              <input type="submit" class="btn btn-primary btn-lg btn-fill" value="Save" [disabled]="!addEventForm.valid"/>
             </div>
           </div>
         </form>

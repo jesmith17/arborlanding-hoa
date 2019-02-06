@@ -144,7 +144,6 @@ export class NavbarComponent implements OnInit {
           titlee = titlee.slice( 2 );
       }
       titlee = titlee.split('/').pop();
-      console.log(this.listTitles);
 
       for ( let item = 0; item < this.listTitles.length; item++ ) {
           if ( this.listTitles[item].path.split('/').pop() === titlee ) {
