@@ -7,7 +7,7 @@
       <h3>A Great Neighborhood in Olathe, KS</h3>
       <br />
       <a [routerLink]="['/', 'public','events']" class="btn btn-outline-neutral btn-round"><i class="fa fa-calendar"></i>Events Calendar</a>
-      <a [routerLink]="['/', 'auth','signin']" class="btn btn-outline-neutral btn-round">Resident Sign-In</a>
+      <a [routerLink]="['/', 'public','archrequest']" class="btn btn-outline-neutral btn-round"><i class="fa fa-building"></i>Arch Request</a>
     </div>
   </div>
 </div>
@@ -147,21 +147,49 @@
       </div>
     </div>
   </div>
-
+  <div class="section section-gray news-section text-center">
+    <div class="container">
+      <h2 class="title">News & Events</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="title">Upcoming Events</h4>
+          <ul class="no-bullet text-left">
+            <li *ngFor="let event of events | slice:0:10 ">{{ event.title }} - {{ event.startDate | date }} @ {{ event.location }}</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h4 class="title">News</h4>
+          <ul class="no-bullet text-left">
+            <li *ngFor="let content of news | slice:0:5 ">{{ content.content }} </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="section landing-section">
     <div class="container">
       <div class="row">
         <div class="col-md-8 mr-auto ml-auto">
           <h2 class="text-center">Keep in touch?</h2>
-          <form class="contact-form">
+          <h3 class="text-center">Sign up receive Arbor Landing Emails</h3>
+          <form class="contact-form" (ngSubmit)="addSubscriber()" [formGroup]="contactForm">
             <div class="row">
-              <div class="col-md-6">
-                <label>Name</label>
+              <div class="col-md-3">
+                <label>First Name</label>
                 <div class="input-group" >
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Name" >
+                  <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>Last Name</label>
+                <div class="input-group" >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
                 </div>
               </div>
               <div class="col-md-6">
@@ -170,15 +198,13 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email" >
+                  <input type="text" class="form-control" placeholder="Email" formControlName="email">
                 </div>
               </div>
             </div>
-            <label>Message</label>
-            <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
             <div class="row">
               <div class="col-md-4 mr-auto ml-auto">
-                <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                <button class="btn btn-danger btn-lg btn-fill" [disabled]="!contactForm.valid">Subscribe</button>
               </div>
             </div>
           </form>

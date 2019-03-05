@@ -10,22 +10,33 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!isDocumentation()">
-          <a class="nav-link" rel="tooltip" title="Events Calendar" data-placement="bottom" [routerLink]="['/','public','events']">
-            <i class="nc-icon nc-calendar-60"></i> Events
-          </a>
+        <li class="nav-item">
+          <div ngbDropdown class="d-inline-block dropdown">
+            <a class="nav-link" id="dropdownResident" ngbDropdownToggle>Residents</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownResident" class="dropdown-primary">
+              <a class="dropdown-item" rel="tooltip" title="Events Calendar" data-placement="bottom" [routerLink]="['/','public','events']">
+                <i class="fa fa-calendar"></i> Events
+              </a>
+              <a class="dropdown-item" rel="tooltip" title="Events Calendar" data-placement="bottom" [routerLink]="['/','public','archrequest']">
+                <i class="fa fa-building"></i> Arch Request
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="nav-item" *ngIf="!isDocumentation()">
-          <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/arborlandinghoa/" target="_blank">
-            <i class="fa fa-facebook-square"></i>
-            Facebook
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="!isDocumentation()">
-          <a class="nav-link" rel="tooltip" title="Join the conversation on Nextdoor" data-placement="bottom" href="https://www.nextdoor.com" target="_blank">
-            <i class="fa fa-home"></i>
-            NextDoor
-          </a>
+        <li class="nav-item ">
+          <div ngbDropdown class="d-inline-block dropdown">
+            <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Social Media</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+              <a class="dropdown-item" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/arborlandinghoa/" target="_blank">
+                <i class="fa fa-facebook-square"></i>
+                Facebook
+              </a>
+              <a class="dropdown-item" rel="tooltip" title="Join the conversation on Nextdoor" data-placement="bottom" href="https://www.nextdoor.com" target="_blank">
+                <i class="fa fa-home"></i>
+                NextDoor
+              </a>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" rel="tooltip" title="Resident Login" data-placement="bottom" [routerLink]="['/','public','signin']">
@@ -33,8 +44,10 @@
             Sign In
           </a>
         </li>
-
       </ul>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+      </div>
     </div>
   </div>
 </nav>

@@ -1,9 +1,9 @@
-import {HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
-import {Injectable, Injector} from "@angular/core";
-import {Router} from "@angular/router";
-import {User} from "../models/user.model";
+import {Injectable, Injector} from '@angular/core';
+import {Router} from '@angular/router';
+import {User} from '../models/user.model';
 import {tap} from 'rxjs/operators';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     private router: Router;
 
-    constructor(router: Router){
+    constructor(router: Router) {
         this.router = router;
     }
 
@@ -21,8 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
         const headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
         let token: User;
         if (req.url.indexOf('/login') !== -1) {
-            const clonedRequest = req.clone({ setHeaders: headers });
-            return next.handle(clonedRequest);
+            const loginRequest = req.clone({ setHeaders: headers });
+            return next.handle(loginRequest);
         }
         if (localStorage.getItem('currentUser') != null) {
             token = JSON.parse(localStorage.getItem('currentUser'));

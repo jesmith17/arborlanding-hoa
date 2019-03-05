@@ -32,9 +32,8 @@
         </div>
         <div class="card-body">
           <ul>
-            <li>Winter Hayride - Dec 1st</li>
-            <li>Annual Board Meeting - Feb 1st. 7:00 @ Sunnyside</li>
-            <li>Lorem Ipsum dolor</li>
+            <li *ngFor="let event of events">{{ event.title }} - {{ event.startDate | date }} @ {{ event.location }}</li>
+
           </ul>
         </div>
         <div class="card-footer">

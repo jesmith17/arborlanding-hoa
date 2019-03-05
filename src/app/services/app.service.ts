@@ -30,6 +30,22 @@ export class AppService {
     return this.http.get(`${environment.baseUrl}/users/${id}`);
   }
 
+  getArchRequests() {
+    return this.http.get(`${environment.baseUrl}/arch_requests`);
+  }
 
+  getNews() {
+    return this.http.get(`${environment.baseUrl}/news`);
+  }
+
+
+  addSubscriber(firstName: string, lastName: string, email: string) {
+    return this.http.post(`${environment.baseUrl}/mailchimp/subscribe`,
+      { subscribe: {
+        first_name: firstName,
+        last_name: lastName,
+          email: email
+      }});
+    }
 
 }

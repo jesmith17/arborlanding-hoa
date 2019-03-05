@@ -7,6 +7,7 @@ import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
 import {PublicComponent} from './public.component';
 import {PublicCalendarComponent} from './public-calendar/public-calendar.component';
+import {ArchrequestComponent} from './archrequest/archrequest.component';
 
 
 
@@ -15,6 +16,7 @@ import {PublicCalendarComponent} from './public-calendar/public-calendar.compone
 const childRoutes: Routes = [
   { path: 'landing', component: HomeComponent},
   { path: 'events', component: PublicCalendarComponent, pathMatch: 'full'},
+  { path: 'archrequest', component: ArchrequestComponent, pathMatch: 'full'},
   { path: 'signin', component: SigninComponent},
   { path: 'register', component: SignupComponent},
   { path: '',  redirectTo: 'landing', pathMatch: 'full' }

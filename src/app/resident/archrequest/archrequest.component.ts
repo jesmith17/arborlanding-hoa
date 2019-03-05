@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../../services/app.service';
 
 @Component({
   selector: 'app-archrequest',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArchrequestComponent implements OnInit {
 
-  constructor() { }
+  requests = [];
+
+  constructor(private appService: AppService ) { }
 
   ngOnInit() {
+
+    this.appService.getArchRequests().subscribe( (data: any[]) => {
+      this.requests = data;
+    });
+
   }
 
 }

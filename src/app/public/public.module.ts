@@ -11,6 +11,8 @@ import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
 import {SignoutComponent} from './signout/signout.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import { ArchrequestComponent } from './archrequest/archrequest.component';
 
 @NgModule({
   imports: [
@@ -19,9 +21,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbDropdownModule,
     ScrollSpyModule.forRoot(),
   ],
   declarations: [HomeComponent, NavbarComponent, PublicComponent, PublicCalendarComponent,
-    SigninComponent, SignupComponent, SignoutComponent]
+    SigninComponent, SignupComponent, SignoutComponent, ArchrequestComponent]
 })
 export class PublicModule { }
